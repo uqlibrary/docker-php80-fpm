@@ -1,11 +1,7 @@
 FROM uqlibrary/alpine:3.13.1
 
 ENV COMPOSER_VERSION=2.0.9
-ENV PRESTISSIMO_VERSION=0.3.10
-ENV XDEBUG_VERSION=3.0.2
-ENV IGBINARY_VERSION=3.2.1
 ENV NEWRELIC_VERSION=9.16.0.295
-ENV PHP_MEMCACHED_VERSION=3.1.5
 ENV NR_INSTALL_SILENT=1
 ENV NR_INSTALL_PHPLIST=/usr/bin
 ENV BUILD_DEPS file re2c autoconf make g++ gcc groff php8-dev libmemcached-dev cyrus-sasl-dev zlib-dev pcre-dev
@@ -44,30 +40,6 @@ RUN apk add --update --no-cache \
     && ln -s /usr/bin/phpize8 /usr/bin/phpize \
     && ln -s /usr/bin/php-config8 /usr/bin/php-config \
     && ln -s /usr/bin/phpdbg8 /usr/bin/phpdbg \
-    # XDebug
-    #&& cd /tmp && wget -q https://xdebug.org/files/xdebug-${XDEBUG_VERSION}.tgz \
-    #&& tar -zxvf xdebug-${XDEBUG_VERSION}.tgz \
-    #&& cd xdebug-${XDEBUG_VERSION} && phpize8 \
-    #&& ./configure --enable-xdebug && make && make install \
-    #
-    # igbinary
-    #&& cd /tmp && wget -q -O igbinary-${IGBINARY_VERSION}.tar.gz https://github.com/igbinary/igbinary/archive/${IGBINARY_VERSION}.tar.gz \
-    #&& tar -zxvf igbinary-${IGBINARY_VERSION}.tar.gz \
-    #&& cd igbinary-${IGBINARY_VERSION} && phpize8 \
-    #&& ./configure CFLAGS="-O2 -g" --enable-igbinary && make && make install \
-    #&& echo 'extension=igbinary.so' >> /etc/php8/conf.d/igbinary.ini \
-    # memcache
-    #&& cd /tmp && wget -q -O php-memcached_v${PHP_MEMCACHED_VERSION}.tar.gz https://github.com/php-memcached-dev/php-memcached/archive/v${PHP_MEMCACHED_VERSION}.tar.gz \
-    #&& tar -zxvf php-memcached_v${PHP_MEMCACHED_VERSION}.tar.gz \
-    #&& cd php-memcached-${PHP_MEMCACHED_VERSION} && phpize8 \
-    #&& ./configure --disable-memcached-sasl --enable-memcached-igbinary && make && make install \
-    #&& echo 'extension=memcached.so' >> /etc/php8/conf.d/memcached.ini \
-    #&& cd \
-    #&& rm -rf /tmp/* \
-    #
-    ## Composer 1.x
-    ##&& curl -sS https://getcomposer.org/installer | php8 -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION} \
-    ##&& composer global require "hirak/prestissimo:${PRESTISSIMO_VERSION}" \
     #
     # Composer 2.x
     && curl -sS https://getcomposer.org/installer | php8 -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION} \
