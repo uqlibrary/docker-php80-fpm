@@ -1,9 +1,6 @@
 FROM uqlibrary/alpine:3.15.0
 
 ENV COMPOSER_VERSION=2.2.6
-ENV NEWRELIC_VERSION=9.16.0.295
-ENV NR_INSTALL_SILENT=1
-ENV NR_INSTALL_PHPLIST=/usr/bin
 ENV BUILD_DEPS file re2c autoconf make g++ gcc groff php8-dev libmcrypt-dev libmemcached-dev libxml2-dev cyrus-sasl-dev zlib-dev pcre-dev
 
 COPY ./fs/docker-entrypoint.sh /usr/sbin/docker-entrypoint.sh
