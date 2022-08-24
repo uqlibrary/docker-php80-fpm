@@ -1,6 +1,6 @@
-FROM uqlibrary/alpine:3.15.0
+FROM uqlibrary/alpine:3.15.6
 
-ENV COMPOSER_VERSION=2.2.6
+ENV COMPOSER_VERSION=2.2.18
 
 COPY ./fs/docker-entrypoint.sh /usr/sbin/docker-entrypoint.sh
 
