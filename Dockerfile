@@ -1,6 +1,6 @@
-FROM uqlibrary/alpine:3.15.6
+FROM uqlibrary/alpine:3.15.8
 
-ENV COMPOSER_VERSION=2.2.18
+ENV COMPOSER_VERSION=2.2.21
 
 COPY ./fs/docker-entrypoint.sh /usr/sbin/docker-entrypoint.sh
 
@@ -23,6 +23,9 @@ RUN apk add --update --no-cache \
     #
     # Add Postgresql Client
     && apk add --update --no-cache postgresql-client \
+    #
+    # Add MySQL/MariaDB Client Lib
+    && apk add --update --no-cache mariadb-connector-c \
     #
     # Add media handling tools
     && apk add --update --no-cache exiftool mediainfo \
