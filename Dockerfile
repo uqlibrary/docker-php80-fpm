@@ -1,4 +1,4 @@
-FROM uqlibrary/alpine:3.15.8
+FROM uqlibrary/alpine:3.16.7
 
 ENV COMPOSER_VERSION=2.2.21
 
@@ -31,9 +31,9 @@ RUN apk add --update --no-cache \
     && apk add --update --no-cache exiftool mediainfo \
     #
     # Add generic symlinks for php8 binaries
-    && ln -s phar8 /usr/bin/phar \
-    && ln -s php8 /usr/bin/php \
-    && ln -s phpdbg8 /usr/bin/phpdbg \
+    #&& ln -s phar8 /usr/bin/phar \
+    #&& ln -s php8 /usr/bin/php \
+    #&& ln -s phpdbg8 /usr/bin/phpdbg \
     && ln -s php-fpm8 /usr/sbin/php-fpm \
     && ln -s php8 /etc/php \
     #
